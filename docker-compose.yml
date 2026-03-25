@@ -1,18 +1,14 @@
-
 services:
   portfolio:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: angel-portfolio
-    ports:
-      - "4173:4173"
+    build: .                 # <--- IMPORTANTE: Esto le dice que use tu Dockerfile
+    container_name: portfolio-app
     restart: unless-stopped
-    environment:
-      - NODE_ENV=production
-    healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4173"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 20s
+    ports:
+      - "8081:4173"          # <--- Mapea el 8081 (host) al 4173 (donde corre 'serve')
+    # Quité la línea de 'image: nginx' porque chocaba con tu Dockerfile
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
