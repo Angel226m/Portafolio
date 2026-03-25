@@ -21,24 +21,18 @@ jobs:
         cache: 'npm'
 
     - name: Instalar dependencias
-      run: |
-        cd frontend
-        npm ci   # más rápido y confiable que npm install
+      run: npm ci
 
-    - name: Ejecutar Build de producción
-      run: |
-        cd frontend
-        npm run build
+    - name: Construir aplicación (Build)
+      run: npm run build
 
-    - name: Verificar que se generó la carpeta build
-      run: |
-        ls -la frontend/build || echo "❌ No se encontró la carpeta build"
-        echo "✅ Build completado correctamente"
+    - name: Verificar build
+      run: ls -la dist || echo "❌ No se encontró la carpeta dist"
 
     # ========================
-    # DEPLOY (solo cuando se hace push a main)
+    # DEPLOY (solo en push a main)
     # ========================
-    - name: Configurar SSH y desplegar
+    - name: Configurar SSH y Desplegar
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: |
         mkdir -p ~/.ssh/
@@ -46,20 +40,19 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts 2>/dev/null || true
 
-        # Verificar conexión
+        # Verificar conexión SSH
         ssh -v -i ~/.ssh/id_rsa ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "echo '✅ Conexión SSH exitosa'"
 
-        # Transferir solo la carpeta build (más eficiente)
-        rsync -avz -e "ssh -i ~/.ssh/id_rsa" \
-          --delete \
-          frontend/build/ \
-          ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~/portfolio/build/
+        # Transferir solo la carpeta de build (más rápido y limpio)
+        rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa" \
+          dist/ \
+          ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~/portfolio/dist/
 
-        # Reiniciar / recargar el contenedor de Nginx (ajusta el nombre si es diferente)
+        # Reiniciar el contenedor en el servidor
         ssh -i ~/.ssh/id_rsa ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
           cd ~/portfolio && \
           docker compose down && \
           docker compose up -d --build
         "
 
-        echo "🚀 Despliegue del portafolio completado exitosamente"
+        echo "🚀 Portafolio desplegado correctamente!"
