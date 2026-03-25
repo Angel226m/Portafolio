@@ -1,0 +1,65 @@
+name: CI/CD Portfolio - React TS
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v4
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Instalar dependencias
+      run: |
+        cd frontend
+        npm ci   # más rápido y confiable que npm install
+
+    - name: Ejecutar Build de producción
+      run: |
+        cd frontend
+        npm run build
+
+    - name: Verificar que se generó la carpeta build
+      run: |
+        ls -la frontend/build || echo "❌ No se encontró la carpeta build"
+        echo "✅ Build completado correctamente"
+
+    # ========================
+    # DEPLOY (solo cuando se hace push a main)
+    # ========================
+    - name: Configurar SSH y desplegar
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: |
+        mkdir -p ~/.ssh/
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts 2>/dev/null || true
+
+        # Verificar conexión
+        ssh -v -i ~/.ssh/id_rsa ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "echo '✅ Conexión SSH exitosa'"
+
+        # Transferir solo la carpeta build (más eficiente)
+        rsync -avz -e "ssh -i ~/.ssh/id_rsa" \
+          --delete \
+          frontend/build/ \
+          ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~/portfolio/build/
+
+        # Reiniciar / recargar el contenedor de Nginx (ajusta el nombre si es diferente)
+        ssh -i ~/.ssh/id_rsa ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
+          cd ~/portfolio && \
+          docker compose down && \
+          docker compose up -d --build
+        "
+
+        echo "🚀 Despliegue del portafolio completado exitosamente"
