@@ -43,21 +43,23 @@ jobs:
         # Verificar conexión SSH
         ssh -v -i ~/.ssh/id_rsa ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "echo '✅ Conexión SSH exitosa'"
 
-        # Crear las carpetas necesarias en el servidor
+        # Crear carpeta dist si no existe
         ssh -i ~/.ssh/id_rsa ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
           mkdir -p ~/portfolio/dist
         "
 
-        # Transferir los archivos del build
+        # Transferir SOLO la carpeta build (dist/)
         rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa" \
           dist/ \
           ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:~/portfolio/dist/
 
-        # Reiniciar el contenedor Docker
+        # Reiniciar el contenedor del portafolio (docker-compose ya está en el servidor)
         ssh -i ~/.ssh/id_rsa ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "
           cd ~/portfolio && \
+          echo '📂 En carpeta:' && pwd && \
+          ls -la && \
           docker compose down && \
           docker compose up -d --build
         "
 
-        echo "🚀 Portafolio desplegado correctamente en el servidor!"
+        echo "🚀 Portafolio desplegado correctamente en https://portafolio.angelproyect.com"
