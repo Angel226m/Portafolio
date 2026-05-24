@@ -1,13 +1,20 @@
+import nayarakEmpleado from './imegens/NayarakEmpleado.png'
+import nayarakCliente from './imegens/Nayaraktourrcliente.png'
+import crackGuard1 from './imegens/crackguard.png'
+import crackGuard2 from './imegens/crakguard.png'
+
 export const personal = {
   name: 'Angel Garay Torres',
   role: 'Full-Stack Developer & DevOps',
-  subtitle: 'Estudiante de Ingeniería de Sistemas – 8.º ciclo',
+  subtitle: 'Estudiante de Ingeniería de Sistemas – 9.º ciclo',
   university: 'Universidad Nacional de Cañete',
-  location: 'Chincha, Perú',
+  location: 'Lima, Perú',
   email: 'angelgarayt22@gmail.com',
   phone: '+51 932 284 763',
   github: 'https://github.com/Angel226m',
   githubHandle: 'Angel226m',
+  available: true,
+  availableFor: 'Prácticas preprofesionales / Junior',
   bio: 'Apasionado por el desarrollo full-stack, DevOps, Inteligencia Artificial y soluciones escalables para problemas reales. Experiencia en proyectos con arquitecturas modernas, integración de pagos, CI/CD, IoT y deep learning.',
 }
 
@@ -40,6 +47,7 @@ export const projects = [
     ],
     tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Go', 'PostgreSQL', 'Docker', 'Nginx', 'GitHub Actions', 'JWT', 'AES-256-GCM', 'Mercado Pago', 'Backblaze B2'],
     techColors: ['blue', 'blue', 'blue', 'blue', 'purple', 'purple', 'green', 'green', 'green', 'purple', 'purple', 'blue', 'green'],
+    images: [nayarakEmpleado, nayarakCliente],
     links: {
       github: 'https://github.com/Angel226m/devops.git',
       live: 'https://reservas.angelproyect.com/inicio',
@@ -123,4 +131,67 @@ export const softSkills = [
   'Trabajo en equipo',
   'Elaboración de reportes',
   'Gestión de activos',
+]
+
+export const certifications = [
+  {
+    id: 5,
+    title: 'Introducción a la Ciberseguridad',
+    issuer: 'Cisco Networking Academy',
+    abbr: 'CSCO',
+    year: '2025',
+    category: 'Seguridad',
+    color: 'b' as const,
+    link: '#',
+  },
+  {
+    id: 6,
+    title: 'Introduction to IoT',
+    issuer: 'Cisco Networking Academy',
+    abbr: 'CSCO',
+    year: '2021',
+    category: 'AI / ML',
+    color: 'g' as const,
+    link: '#',
+  },
+  {
+    id: 1,
+    title: 'Foundations of Cybersecurity',
+    issuer: 'Google (Coursera)',
+    abbr: 'GGL',
+    year: '2025',
+    category: 'Seguridad',
+    color: 'b' as const,
+    link: 'https://coursera.org/share/6d15bb0206bf94d2d2f3665f06221066',
+  },
+  {
+    id: 2,
+    title: 'Play It Safe: Manage Security Risks',
+    issuer: 'Google (Coursera)',
+    abbr: 'GGL',
+    year: '2025',
+    category: 'Seguridad',
+    color: 'b' as const,
+    link: 'https://coursera.org/share/15e58f08d9ece4fa7876de608508a6db',
+  },
+  {
+    id: 3,
+    title: 'Fundamentos de Python',
+    issuer: 'CERSEU-FCM / UNMSM',
+    abbr: 'UNMSM',
+    year: '2024',
+    category: 'AI / ML',
+    color: 'g' as const,
+    link: '#',
+  },
+  {
+    id: 4,
+    title: 'Python for Data Science',
+    issuer: 'CINFO-DGSU / UNMSM',
+    abbr: 'UNMSM',
+    year: '2024',
+    category: 'AI / ML',
+    color: 'p' as const,
+    link: '#',
+  },
 ]
