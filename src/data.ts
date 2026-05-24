@@ -72,6 +72,7 @@ export const projects = [
       'Selección dinámica de modelo por request (model=model_1|model_2)',
       'Casos de uso: puentes, edificios, evaluación post-desastre',
     ],
+    images: [crackGuard1, crackGuard2],
     tech: ['Python', 'Flask', 'PyTorch', 'UNet++', 'EfficientNet-B8', 'ConvNeXt', 'React', 'Docker', 'Raspberry Pi', 'WebRTC', 'GitHub Actions'],
     techColors: ['green', 'green', 'purple', 'purple', 'purple', 'purple', 'blue', 'green', 'green', 'blue', 'green'],
     links: {
