@@ -195,4 +195,14 @@ export const certifications = [
     color: 'p' as const,
     link: '#',
   },
+  {
+    id: 7,
+    title: 'Introduction to Containers w/ Docker, Kubernetes & OpenShift',
+    issuer: 'IBM (Coursera)',
+    abbr: 'IBM',
+    year: '2026',
+    category: 'Cloud',
+    color: 'g' as const,
+    link: 'https://coursera.org/share/f4a27721152575f072b37056705dfe10',
+  },
 ]
