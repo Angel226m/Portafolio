@@ -2,6 +2,9 @@ import nayarakEmpleado from './imegens/NayarakEmpleado.png'
 import nayarakCliente from './imegens/Nayaraktourrcliente.png'
 import crackGuard1 from './imegens/crackguard.png'
 import crackGuard2 from './imegens/crakguard.png'
+import georiesgoMapa from './imegens/GEORIESGODEZLISAMIETO.png'
+import georiesgoHistorico from './imegens/registrohistoricosismo.png'
+import georiesgoRiesgo from './imegens/riesgodistrito-irc.png'
 
 export const personal = {
   name: 'Angel Garay Torres',
@@ -105,6 +108,31 @@ export const projects = [
     tags: ['Web App', 'Full-Stack', 'Firebase'],
     color: 'purple',
     featured: false,
+  },
+  {
+    id: 4,
+    year: '2026',
+    title: 'GeoRiesgo Perú – Plataforma Multi-Amenaza con ML y EWS',
+    role: 'Desarrollador de Sistemas de Información Geográfica (SIG) · Proyecto universitario final',
+    description:
+      'Plataforma web geoespacial para el análisis y monitoreo de riesgos naturales en Perú, integrando sismicidad, vulcanismo, inundaciones, deslizamientos, tsunamis, sequías y alertas tempranas en tiempo real.',
+    highlights: [
+      'Mapas interactivos 2D/3D con MapLibre GL y deck.gl para análisis espacial multi-amenaza',
+      'Modelos ML con XGBoost, interpretabilidad con SHAP y optimización de hiperparámetros con Optuna',
+      'Backend en Python + FastAPI con PostgreSQL/PostGIS y cache con Redis',
+      'Sistema de Alertas Tempranas (EWS) con WebSockets y Server-Sent Events en tiempo real',
+      'Integración de más de 15 fuentes oficiales para análisis territorial y gestión del riesgo',
+      'Despliegue contenedorizado con Docker, Docker Compose y Nginx',
+    ],
+    images: [georiesgoMapa, georiesgoHistorico, georiesgoRiesgo],
+    tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'MapLibre GL', 'deck.gl', 'Python', 'FastAPI', 'XGBoost', 'SHAP', 'Optuna', 'PostgreSQL', 'PostGIS', 'Redis', 'WebSockets', 'SSE', 'Docker', 'Docker Compose', 'Nginx'],
+    techColors: ['blue','blue','blue','blue','green','green','purple','purple','purple','purple','purple','green','green','green','blue','blue','green','green','green'],
+    links: {
+      github: 'https://github.com/Angel226m/SISTEMAS-DE-INFORMACI-N-geografico',
+    },
+    tags: ['SIG', 'Machine Learning', 'EWS', 'Full-Stack'],
+    color: 'cyan',
+    featured: true,
   },
 ]
 
@@ -224,5 +252,15 @@ export const certifications = [
     category: 'Seguridad',
     color: 'b' as const,
     link: 'https://coursera.org/share/ea51c2e7b029af228d578cb5574f2b91',
+  },
+  {
+    id: 10,
+    title: 'AWS Cloud Technical Essentials',
+    issuer: 'AWS (Coursera)',
+    abbr: 'AWS',
+    year: '2026',
+    category: 'Cloud',
+    color: 'o' as const,
+    link: 'https://coursera.org/share/378a08fcd9fb122126102031f99e07e6',
   },
 ]

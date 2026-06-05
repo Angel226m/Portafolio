@@ -16,9 +16,14 @@ const accentMap: Record<string, string> = {
 function Images({ images, accent }: { images: string[]; accent: string }) {
   const [lightbox, setLightbox] = useState<string | null>(null)
 
+  const gridCols =
+    images.length === 1 ? 'grid-cols-1' :
+    images.length === 2 ? 'grid-cols-2' :
+    'grid-cols-1 sm:grid-cols-3'
+
   return (
     <>
-      <div className={`grid ${images.length >= 2 ? 'grid-cols-2' : 'grid-cols-1'} gap-2`}>
+      <div className={`grid ${gridCols} gap-2`}>
         {images.map((img, i) => (
           <button
             key={i}
