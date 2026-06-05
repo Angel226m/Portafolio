@@ -83,9 +83,9 @@ export default function Hero() {
     <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#05080f]">
       <div className="absolute inset-0 grid-lines opacity-20 pointer-events-none" />
 
-      <div className="orb-pulse absolute top-[-120px] left-[-80px] w-[520px] h-[520px] rounded-full bg-[#38bdf8]/5 blur-[100px] pointer-events-none" />
-      <div className="orb-pulse-2 absolute bottom-[-80px] right-[-60px] w-[420px] h-[420px] rounded-full bg-[#818cf8]/5 blur-[90px] pointer-events-none" />
-      <div className="orb-pulse-3 absolute top-[40%] left-[50%] w-[300px] h-[300px] rounded-full bg-[#34d399]/3 blur-[80px] pointer-events-none" />
+      <div className="orb-pulse absolute top-[-120px] left-[-80px] w-[420px] h-[420px] md:w-[520px] md:h-[520px] rounded-full bg-[#38bdf8]/5 blur-[100px] pointer-events-none" />
+      <div className="orb-pulse-2 absolute bottom-[-80px] right-[-60px] w-[340px] h-[340px] md:w-[420px] md:h-[420px] rounded-full bg-[#818cf8]/5 blur-[90px] pointer-events-none" />
+      <div className="orb-pulse-3 absolute top-[40%] left-[50%] w-[240px] h-[240px] md:w-[300px] md:h-[300px] rounded-full bg-[#34d399]/3 blur-[80px] pointer-events-none" />
 
       {CLOUD_TECHS.map((t, i) => (
         <div
@@ -101,7 +101,7 @@ export default function Hero() {
         </div>
       ))}
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-24 pb-16 w-full">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-16 w-full">
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-8 items-center">
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#34d399]/30 bg-[#34d399]/6 mb-7 fade-in group hover:border-[#34d399]/60 transition-all duration-300">
@@ -111,11 +111,11 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className="fade-up d-100 mb-4 leading-[1.04]" style={{fontFamily:'Syne,sans-serif'}}>
-              <span className="block text-[56px] sm:text-[72px] lg:text-[82px] font-extrabold text-[#e2edf8] tracking-tight">
+            <h1 className="fade-up d-100 mb-4 leading-[1.02]" style={{fontFamily:'Syne,sans-serif'}}>
+              <span className="block font-extrabold text-[#e2edf8] tracking-tight text-[clamp(2.5rem,8vw,5.125rem)]">
                 Angel
               </span>
-              <span className="block text-[56px] sm:text-[72px] lg:text-[82px] font-extrabold text-grad">
+              <span className="block font-extrabold text-grad text-[clamp(2.2rem,7vw,5.125rem)] break-words">
                 Garay Torres
               </span>
             </h1>
@@ -126,7 +126,7 @@ export default function Hero() {
               <span className="cursor-blink font-mono text-[#38bdf8]">&#x258C;</span>
             </div>
 
-            <div className="flex items-center gap-1.5 mb-6 text-[11px] font-mono text-[#2a4060] fade-up d-200">
+            <div className="flex items-center flex-wrap gap-x-1.5 gap-y-1 mb-6 text-[11px] font-mono text-[#2a4060] fade-up d-200">
               <span className="text-[#4a6a8a]">Sugerencias:</span>
               {SUGGESTIONS.map((s, i) => (
                 <a key={s.cmd} href={s.section}

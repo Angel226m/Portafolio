@@ -1,4 +1,4 @@
-import { useRef, type ReactNode } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 
 interface Props {
   children: ReactNode
@@ -11,8 +11,14 @@ interface Props {
 export default function TiltCard({ children, className = '', maxTilt = 8, glare = true, perspective = 1000 }: Props) {
   const cardRef = useRef<HTMLDivElement>(null)
   const glareRef = useRef<HTMLDivElement>(null)
+  const enabledRef = useRef(true)
+
+  useEffect(() => {
+    enabledRef.current = !window.matchMedia('(pointer: coarse), (max-width: 640px)').matches
+  }, [])
 
   const onMove = (e: React.MouseEvent) => {
+    if (!enabledRef.current) return
     const card = cardRef.current
     if (!card) return
     const rect = card.getBoundingClientRect()

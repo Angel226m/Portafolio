@@ -3,7 +3,7 @@ import { personal } from '../data'
 export default function Footer() {
   return (
     <footer className="border-t border-[#1e3a5f]/40 py-8">
-      <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-7 h-7 rounded-md border border-[#38bdf8]/30 bg-[#38bdf8]/8 flex items-center justify-center">
             <span className="font-mono text-[10px] font-bold text-[#38bdf8]">AG</span>

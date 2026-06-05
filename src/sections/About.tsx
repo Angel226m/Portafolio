@@ -14,11 +14,11 @@ export default function About() {
   }, [])
 
   return (
-    <section id="about" className="py-20 section-border" ref={sectionRef}>
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-10 reveal">
+    <section id="about" className="py-16 sm:py-20 section-border" ref={sectionRef}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="mb-8 sm:mb-10 reveal">
           <div className="section-label">Sobre mí</div>
-          <h2 className="text-[38px] sm:text-[46px] font-extrabold text-[#e2edf8] leading-tight" style={{fontFamily:'Syne,sans-serif'}}>
+          <h2 className="text-[32px] sm:text-[42px] lg:text-[46px] font-extrabold text-[#e2edf8] leading-tight" style={{fontFamily:'Syne,sans-serif'}}>
             <WordReveal text="El desarrollador detrás" />
           </h2>
           <div className="section-divider w-20 mt-3" />

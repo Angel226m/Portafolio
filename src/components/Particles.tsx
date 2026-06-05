@@ -1,13 +1,18 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-interface Particle {
-  x: number; y: number; vx: number; vy: number; size: number; alpha: number
-}
-
-export default function Particles({ count = 80 }: { count?: number }) {
+export default function Particles({ count = 60 }: { count?: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mouse = useRef({ x: -1000, y: -1000 })
-  const particles = useRef<Particle[]>([])
+  const particles = useRef<Array<{ x: number; y: number; vx: number; vy: number; size: number; alpha: number }>>([])
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 640px), (pointer: coarse)')
+    setIsMobile(mq.matches)
+    const onChange = () => setIsMobile(mq.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -26,13 +31,18 @@ export default function Particles({ count = 80 }: { count?: number }) {
       mouse.current.x = e.clientX
       mouse.current.y = e.clientY
     }
-    window.addEventListener('mousemove', onMouse)
-    window.addEventListener('mouseleave', () => {
+    const resetMouse = () => {
       mouse.current.x = -1000
       mouse.current.y = -1000
-    })
+    }
 
-    particles.current = Array.from({ length: count }, () => ({
+    if (!isMobile) {
+      window.addEventListener('mousemove', onMouse)
+      window.addEventListener('mouseleave', resetMouse)
+    }
+
+    const total = isMobile ? Math.min(25, Math.floor(count / 3)) : count
+    particles.current = Array.from({ length: total }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       vx: (Math.random() - 0.5) * 0.4,
@@ -44,15 +54,18 @@ export default function Particles({ count = 80 }: { count?: number }) {
     let animId: number
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
+      const maxDist = isMobile ? 80 : 120
+      const interactDist = isMobile ? 0 : 150
 
       particles.current.forEach((p, i) => {
-        const dx = mouse.current.x - p.x
-        const dy = mouse.current.y - p.y
-        const dist = Math.sqrt(dx * dx + dy * dy)
-
-        if (dist < 150) {
-          p.vx -= dx * 0.0004
-          p.vy -= dy * 0.0004
+        if (interactDist > 0) {
+          const dx = mouse.current.x - p.x
+          const dy = mouse.current.y - p.y
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          if (dist < interactDist) {
+            p.vx -= dx * 0.0004
+            p.vy -= dy * 0.0004
+          }
         }
 
         p.vx += (Math.random() - 0.5) * 0.02
@@ -76,11 +89,11 @@ export default function Particles({ count = 80 }: { count?: number }) {
         for (let j = i + 1; j < particles.current.length; j++) {
           const p2 = particles.current[j]
           const d = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2)
-          if (d < 120) {
+          if (d < maxDist) {
             ctx.beginPath()
             ctx.moveTo(p.x, p.y)
             ctx.lineTo(p2.x, p2.y)
-            ctx.strokeStyle = `rgba(56, 189, 248, ${0.06 * (1 - d / 120)})`
+            ctx.strokeStyle = `rgba(56, 189, 248, ${0.06 * (1 - d / maxDist)})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
@@ -96,7 +109,7 @@ export default function Particles({ count = 80 }: { count?: number }) {
       window.removeEventListener('resize', resize)
       window.removeEventListener('mousemove', onMouse)
     }
-  }, [count])
+  }, [count, isMobile])
 
   return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0 opacity-60" />
 }

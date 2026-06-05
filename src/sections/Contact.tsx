@@ -13,16 +13,16 @@ export default function Contact() {
   }, [])
 
   return (
-    <section id="contact" className="py-20 section-border" ref={sectionRef}>
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-10 items-center">
+    <section id="contact" className="py-16 sm:py-20 section-border" ref={sectionRef}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           <div className="reveal rd1">
             <div className="section-label">Contacto</div>
-            <h2 className="text-[38px] sm:text-[46px] font-extrabold text-[#e2edf8] leading-tight mb-4" style={{fontFamily:'Syne,sans-serif'}}>
+            <h2 className="text-[32px] sm:text-[42px] lg:text-[46px] font-extrabold text-[#e2edf8] leading-tight mb-4" style={{fontFamily:'Syne,sans-serif'}}>
               ¿Hablamos<span className="text-grad">?</span>
             </h2>
             <div className="section-divider w-20 mb-3" />
-            <p className="text-[14px] text-[#6b8daa] leading-relaxed mb-6 max-w-sm">
+            <p className="text-[13px] sm:text-[14px] text-[#6b8daa] leading-relaxed mb-6 max-w-sm">
               Busco prácticas preprofesionales o posición junior. Si tienes un proyecto
               interesante o una oportunidad, estoy listo.
             </p>

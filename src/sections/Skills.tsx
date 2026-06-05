@@ -50,15 +50,15 @@ export default function Skills() {
   }, [])
 
   return (
-    <section id="skills" className="py-20 section-border overflow-hidden" ref={sectionRef}>
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-12 reveal">
+    <section id="skills" className="py-16 sm:py-20 section-border overflow-hidden" ref={sectionRef}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="mb-10 sm:mb-12 reveal">
           <div className="section-label">Tecnologías</div>
-          <h2 className="text-[38px] sm:text-[46px] font-extrabold text-[#e2edf8] leading-tight" style={{fontFamily:'Syne,sans-serif'}}>
+          <h2 className="text-[32px] sm:text-[42px] lg:text-[46px] font-extrabold text-[#e2edf8] leading-tight" style={{fontFamily:'Syne,sans-serif'}}>
             Tech <span className="text-grad-b">stack</span>
           </h2>
           <div className="section-divider w-20 mt-3 mb-3" />
-          <p className="text-[14px] text-[#6b8daa]">Del frontend al servidor. Del código al despliegue.</p>
+          <p className="text-[13px] sm:text-[14px] text-[#6b8daa]">Del frontend al servidor. Del código al despliegue.</p>
         </div>
 
         <div className="reveal rd1 mb-8">

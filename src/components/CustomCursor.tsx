@@ -6,6 +6,8 @@ export default function CustomCursor() {
   const smooth = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
+    if (window.matchMedia('(pointer: coarse)').matches) return
+
     const onMove = (e: MouseEvent) => {
       pos.current = { x: e.clientX, y: e.clientY }
     }
@@ -44,13 +46,13 @@ export default function CustomCursor() {
     <>
       <div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-6 h-6 rounded-full pointer-events-none z-[9999] mix-blend-difference transition-transform duration-150"
+        className="fixed top-0 left-0 w-6 h-6 rounded-full pointer-events-none z-[9999] mix-blend-difference transition-transform duration-150 max-md:hidden"
         style={{
           background: '#38bdf8',
           boxShadow: '0 0 20px #38bdf8, 0 0 60px rgba(56,189,248,0.3)',
         }}
       />
-      <style>{'*{cursor:none!important}'}</style>
+      <style>{'@media (pointer: fine) { *{cursor:none!important} }'}</style>
     </>
   )
 }

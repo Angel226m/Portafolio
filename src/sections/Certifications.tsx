@@ -8,6 +8,7 @@ const catStyle: Record<string, { bg: string; text: string; border: string; dot: 
   'Frontend':  { bg:'bg-[#a78bfa]/9',  text:'text-[#c4b5fd]',  border:'border-[#a78bfa]/30', dot:'bg-[#a78bfa]' },
   'Backend':   { bg:'bg-[#818cf8]/9',  text:'text-[#a5b4fc]',  border:'border-[#818cf8]/30', dot:'bg-[#818cf8]' },
   'AI / ML':   { bg:'bg-[#2dd4bf]/9',  text:'text-[#5eead4]',  border:'border-[#2dd4bf]/30', dot:'bg-[#2dd4bf]' },
+  'Cloud':     { bg:'bg-[#fb923c]/10', text:'text-[#fdba74]',  border:'border-[#fb923c]/30', dot:'bg-[#fb923c]' },
 }
 
 const issuerStyle: Record<string, { bg: string; text: string }> = {
@@ -19,6 +20,8 @@ const issuerStyle: Record<string, { bg: string; text: string }> = {
   'GGL':   { bg:'bg-[#60a5fa]/12', text:'text-[#93c5fd]' },
   'UNMSM': { bg:'bg-[#f87171]/10', text:'text-[#fca5a5]' },
   'CSCO':  { bg:'bg-[#38bdf8]/10', text:'text-[#38bdf8]' },
+  'IBM':   { bg:'bg-[#0ea5e9]/10', text:'text-[#7dd3fc]' },
+  'AWS':   { bg:'bg-[#ff9900]/12', text:'text-[#ffb84d]' },
 }
 
 export default function Certifications() {
@@ -33,20 +36,20 @@ export default function Certifications() {
   }, [])
 
   return (
-    <section id="certifications" className="py-20 section-border" ref={sectionRef}>
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-12 reveal">
+    <section id="certifications" className="py-16 sm:py-20 section-border" ref={sectionRef}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="mb-10 sm:mb-12 reveal">
           <div className="section-label">Certificaciones</div>
-          <h2 className="text-[38px] sm:text-[46px] font-extrabold text-[#e2edf8] leading-tight" style={{fontFamily:'Syne,sans-serif'}}>
+          <h2 className="text-[32px] sm:text-[42px] lg:text-[46px] font-extrabold text-[#e2edf8] leading-tight" style={{fontFamily:'Syne,sans-serif'}}>
             Logros <span className="text-grad-g">&amp; Credenciales</span>
           </h2>
           <div className="section-divider w-20 mt-3 mb-3" />
-          <p className="text-[14px] text-[#6b8daa] max-w-lg">
+          <p className="text-[13px] sm:text-[14px] text-[#6b8daa] max-w-lg">
             Aprendizaje continuo en seguridad, DevOps, desarrollo y machine learning.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
           {certifications.map((cert, i) => {
             const cat = catStyle[cert.category] ?? catStyle['Frontend']
             const iss = issuerStyle[cert.abbr] ?? { bg:'bg-[#38bdf8]/10', text:'text-[#38bdf8]' }
@@ -54,21 +57,21 @@ export default function Certifications() {
 
             return (
               <TiltCard key={cert.id} maxTilt={5} perspective={1000} glare={false}>
-                <div className={`cert-card reveal ${delay} p-5 flex flex-col gap-4`}>
-                  <div className="flex items-start justify-between gap-3">
+                <div className={`cert-card reveal ${delay} p-4 sm:p-5 flex flex-col gap-3 sm:gap-4 h-full`}>
+                  <div className="flex items-start justify-between gap-2 sm:gap-3">
                     <div className={`min-w-[44px] h-11 px-2 rounded-xl flex items-center justify-center font-mono text-[10px] font-bold shrink-0 ${iss.bg} ${iss.text}`}>
                       {cert.abbr}
                     </div>
-                    <span className={`font-mono text-[9.5px] uppercase tracking-[.1em] px-2.5 py-1 rounded-full border ${cat.bg} ${cat.text} ${cat.border}`}>
+                    <span className={`font-mono text-[9.5px] uppercase tracking-[.1em] px-2.5 py-1 rounded-full border text-right ${cat.bg} ${cat.text} ${cat.border}`}>
                       {cert.category}
                     </span>
                   </div>
 
                   <div className="flex-1">
-                    <h4 className="text-[14px] font-bold text-[#e2edf8] leading-snug mb-1" style={{fontFamily:'Syne,sans-serif'}}>
+                    <h4 className="text-[13.5px] sm:text-[14px] font-bold text-[#e2edf8] leading-snug mb-1 break-words" style={{fontFamily:'Syne,sans-serif'}}>
                       {cert.title}
                     </h4>
-                    <div className="text-[12px] text-[#4a6a8a] font-mono">{cert.issuer}</div>
+                    <div className="text-[11.5px] sm:text-[12px] text-[#4a6a8a] font-mono break-words">{cert.issuer}</div>
                   </div>
 
                   <div className="flex items-center justify-between pt-3 border-t border-[#1e3a5f]/50">
@@ -94,7 +97,7 @@ export default function Certifications() {
           })}
         </div>
 
-        <p className="reveal mt-8 text-center font-mono text-[11px] text-[#2a4060]">
+        <p className="reveal mt-8 text-center font-mono text-[11px] text-[#2a4060] px-4">
           En constante aprendizaje · Más certificaciones en progreso
         </p>
       </div>

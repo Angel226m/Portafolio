@@ -11,6 +11,7 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   ::selection { background: rgba(99, 102, 241, 0.3); color: #a5b4fc; }
   ::-webkit-scrollbar { width: 4px; }
@@ -19,6 +20,7 @@
   ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
   section { position: relative; }
   img { max-width: 100%; height: auto; }
+  p, h1, h2, h3, h4, h5, h6, span, a, li { overflow-wrap: anywhere; }
 
   /* Section background gradient mesh */
   section:nth-child(even) {
@@ -26,6 +28,14 @@
       radial-gradient(ellipse at 20% 50%, rgba(56,189,248,.03) 0%, transparent 50%),
       radial-gradient(ellipse at 80% 20%, rgba(167,139,250,.02) 0%, transparent 50%),
       radial-gradient(ellipse at 60% 80%, rgba(52,211,153,.02) 0%, transparent 50%);
+  }
+
+  @media (max-width: 640px) {
+    html { font-size: 14px; }
+  }
+
+  @media (max-width: 380px) {
+    html { font-size: 13.5px; }
   }
 }
 
@@ -251,6 +261,38 @@
   animation: marquee 30s linear infinite;
 }
 .marquee-track:hover { animation-play-state: paused; }
+
+@media (max-width: 640px) {
+  .marquee-track { animation-duration: 22s; }
+}
+
+/* ── Mobile-friendly hero title ──────────────────────────────── */
+@media (max-width: 480px) {
+  .hero-line { font-size: clamp(2.4rem, 11vw, 3rem) !important; }
+}
+
+/* ── Touch-only optimizations ───────────────────────────────── */
+@media (hover: none) {
+  .cert-card:hover { transform: none; }
+  .stat-pill:hover { transform: none; }
+  .tag:hover { transform: none; }
+}
+
+/* ── Reduce motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .orb-pulse,
+  .orb-pulse-2,
+  .orb-pulse-3,
+  .breathe,
+  .pulse-soft,
+  .float-x,
+  .cursor-blink,
+  .badge-glow {
+    animation: none !important;
+  }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
 
 /* ── Spotlight overlay ──────────────────────────────────────── */
 .spotlight {

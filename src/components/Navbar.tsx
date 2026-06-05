@@ -36,7 +36,7 @@ export default function Navbar() {
         ? 'bg-[#05080f]/85 backdrop-blur-2xl border-b border-[#38bdf8]/8 shadow-[0_1px_30px_rgba(0,0,0,.3)]'
         : 'bg-transparent'
     }`}>
-      <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         <a href="#hero" className="flex items-center gap-2.5 group">
           <div className="w-7 h-7 rounded-md bg-[#38bdf8]/10 border border-[#38bdf8]/30 flex items-center justify-center glow-b group-hover:scale-110 transition-transform duration-300">
             <span className="font-mono text-[11px] font-bold text-[#38bdf8]">AG</span>
@@ -80,7 +80,7 @@ export default function Navbar() {
         open ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
       }`}>
         <div className="bg-[#05080f]/98 backdrop-blur-2xl border-t border-[#38bdf8]/10 shadow-2xl">
-          <ul className="px-6 py-4 flex flex-col gap-3">
+          <ul className="px-4 sm:px-6 py-4 flex flex-col gap-3">
             {links.map(l => (
               <li key={l.href}>
                 <a href={l.href} onClick={() => setOpen(false)}

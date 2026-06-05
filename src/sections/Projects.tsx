@@ -147,19 +147,19 @@ export default function Projects() {
   }, [])
 
   return (
-    <section id="projects" className="py-20 max-w-6xl mx-auto px-6" ref={sectionRef}>
-      <div className="mb-12 reveal">
+    <section id="projects" className="py-16 sm:py-20 max-w-6xl mx-auto px-4 sm:px-6" ref={sectionRef}>
+      <div className="mb-10 sm:mb-12 reveal">
         <div className="section-label">Proyectos destacados</div>
-        <h2 className="text-[38px] sm:text-[46px] font-extrabold text-[#e2edf8] leading-tight" style={{fontFamily:'Syne,sans-serif'}}>
+        <h2 className="text-[32px] sm:text-[42px] lg:text-[46px] font-extrabold text-[#e2edf8] leading-tight" style={{fontFamily:'Syne,sans-serif'}}>
           <WordReveal text="Lo que he construido" />
         </h2>
         <div className="section-divider w-20 mt-3 mb-3" />
-        <p className="text-[14px] text-[#6b8daa] max-w-lg">
+        <p className="text-[13px] sm:text-[14px] text-[#6b8daa] max-w-lg">
           Proyectos full-stack con arquitecturas de producción, seguridad y despliegue automatizado.
         </p>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
         {projects.map((p, i) => (
           <div key={p.id} className={`reveal rd${Math.min(i + 1, 6)} ${!p.featured ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
             <Card p={p} />
