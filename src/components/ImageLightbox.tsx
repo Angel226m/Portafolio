@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useRef } from 'react'
 
 interface Props {
   src: string
@@ -7,6 +7,8 @@ interface Props {
 }
 
 export default function ImageLightbox({ src, alt, onClose }: Props) {
+  const imgRef = useRef<HTMLImageElement>(null)
+
   const handleKey = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') onClose()
   }, [onClose])
@@ -22,24 +24,36 @@ export default function ImageLightbox({ src, alt, onClose }: Props) {
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#05080f]/95 backdrop-blur-xl cursor-zoom-out animate-fadeIn"
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-[#05080f]/98 backdrop-blur-xl animate-fadeIn"
       onClick={onClose}
     >
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#1e3a5f]/50 flex items-center justify-center text-[#c9d8e8] hover:bg-[#38bdf8]/20 hover:text-[#38bdf8] transition-all z-10"
+        className="absolute top-5 right-5 w-11 h-11 rounded-full bg-black/70 border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-200 z-10 shadow-lg hover:scale-110"
+        title="Cerrar"
       >
-        <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
           <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
+
+      <div
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 flex items-center gap-3 px-4 py-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white/70 text-xs font-mono"
+        onClick={e => e.stopPropagation()}
+      >
+        <kbd className="px-1.5 py-0.5 rounded bg-white/10 text-[10px]">ESC</kbd>
+        <span>o clic fuera para cerrar</span>
+      </div>
+
       <img
+        ref={imgRef}
         src={src}
         alt={alt}
         onClick={e => e.stopPropagation()}
-        className="max-w-[90vw] max-h-[90vh] object-contain rounded-xl shadow-2xl animate-fadeUp"
+        className="max-w-[92vw] max-h-[88vh] object-contain rounded-xl shadow-2xl animate-fadeUp select-none"
+        draggable={false}
         style={{
-          boxShadow: '0 0 80px rgba(56,189,248,.1), 0 0 160px rgba(99,102,241,.05)',
+          boxShadow: '0 0 120px rgba(56,189,248,.08), 0 0 200px rgba(99,102,241,.04)',
         }}
       />
     </div>

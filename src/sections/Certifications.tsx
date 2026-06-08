@@ -17,9 +17,9 @@ const issuerStyle: Record<string, { bg: string; text: string }> = {
   'UDM':   { bg:'bg-[#a78bfa]/12', text:'text-[#c4b5fd]' },
   'PY':    { bg:'bg-[#34d399]/10', text:'text-[#6ee7b7]' },
   'GH':    { bg:'bg-[#94a3b8]/10', text:'text-[#cbd5e1]' },
-  'GGL':   { bg:'bg-[#60a5fa]/12', text:'text-[#93c5fd]' },
+  'Google':   { bg:'bg-[#60a5fa]/12', text:'text-[#93c5fd]' },
   'UNMSM': { bg:'bg-[#f87171]/10', text:'text-[#fca5a5]' },
-  'CSCO':  { bg:'bg-[#38bdf8]/10', text:'text-[#38bdf8]' },
+  'CiSCO':  { bg:'bg-[#38bdf8]/10', text:'text-[#38bdf8]' },
   'IBM':   { bg:'bg-[#0ea5e9]/10', text:'text-[#7dd3fc]' },
   'AWS':   { bg:'bg-[#ff9900]/12', text:'text-[#ffb84d]' },
 }

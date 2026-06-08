@@ -5,6 +5,11 @@ import crackGuard2 from './imegens/crakguard.png'
 import georiesgoMapa from './imegens/GEORIESGODEZLISAMIETO.png'
 import georiesgoHistorico from './imegens/registrohistoricosismo.png'
 import georiesgoRiesgo from './imegens/riesgodistrito-irc.png'
+import hotelFluxGrafana from './imegens/graphana.png'
+import hotelFluxCliente from './imegens/paginacliente.png'
+import hotelFluxAdmin from './imegens/paneladmin.png'
+import hotelFluxRecepcion from './imegens/panelrecep.png'
+import hotelFluxPrometheus from './imegens/Prometehus.png'
 
 export const personal = {
   name: 'Angel Garay Torres',
@@ -131,6 +136,34 @@ export const projects = [
       github: 'https://github.com/Angel226m/SISTEMAS-DE-INFORMACI-N-geografico',
     },
     tags: ['SIG', 'Machine Learning', 'EWS', 'Full-Stack'],
+    color: 'cyan',
+    featured: true,
+  },
+  {
+    id: 5,
+    year: '2026',
+    title: 'HotelFlux – Sistema de Gestión Hotelera Reactivo',
+    role: 'Full-Stack Developer | Proyecto universitario final',
+    description:
+      'Plataforma web para gestión hotelera con portal de reservas y panel administrativo en tiempo real. Arquitectura reactiva basada en Elixir/Phoenix con WebSockets, CQRS, Event Sourcing y Observable Repository Pattern.',
+    highlights: [
+      'Frontend reactivo con React 19, TypeScript, RxJS, Vite y Tailwind CSS',
+      'Backend funcional con Elixir, Phoenix Framework, WebSockets y Arquitectura Hexagonal',
+      'Persistencia con PostgreSQL, CQRS, Event Sourcing y Soft Delete',
+      'Tiempo real mediante Phoenix Channels, PubSub y Observable Repository Pattern',
+      'Implementación de Saga Pattern, FSM (Finite State Machine) y programación funcional',
+      'Seguridad basada en JWT, RBAC, bcrypt, OWASP Top 10 e ISO 27001',
+      'Infraestructura con Docker, Nginx, Redis, Oban, Prometheus y Grafana',
+      'Testing automatizado con ExUnit y Vitest (>80% cobertura)',
+      'Reservas hoteleras, gestión de habitaciones, huéspedes, personal, limpieza, auditoría y dashboard analítico en tiempo real',
+    ],
+    images: [hotelFluxCliente, hotelFluxAdmin, hotelFluxRecepcion, hotelFluxGrafana, hotelFluxPrometheus],
+    tech: ['React', 'TypeScript', 'RxJS', 'Vite', 'Tailwind CSS', 'Elixir', 'Phoenix Framework', 'PostgreSQL', 'Redis', 'Docker', 'Nginx', 'Oban', 'Prometheus', 'Grafana', 'JWT', 'WebSockets'],
+    techColors: ['blue', 'blue', 'purple', 'blue', 'blue', 'purple', 'purple', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'purple', 'blue'],
+    links: {
+      github: 'https://github.com/Angel226m/progrmacion-reac',
+    },
+    tags: ['Web App', 'Full-Stack', 'Tiempo Real', 'Arquitectura Reactiva'],
     color: 'cyan',
     featured: true,
   },
