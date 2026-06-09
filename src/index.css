@@ -255,6 +255,10 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+@keyframes marquee-scroll {
+  from { transform: translate3d(0,0,0); }
+  to { transform: translate3d(-50%,0,0); }
+}
 .marquee-track {
   display: flex;
   width: max-content;
@@ -264,6 +268,11 @@
 
 @media (max-width: 640px) {
   .marquee-track { animation-duration: 22s; }
+}
+
+.mask-edges {
+  mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 3%, black 97%, transparent 100%);
 }
 
 /* ── Mobile-friendly hero title ──────────────────────────────── */

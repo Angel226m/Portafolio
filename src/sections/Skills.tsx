@@ -116,8 +116,11 @@ export default function Skills() {
       </div>
 
       {/* Animated marquee of all technologies */}
-      <div className="mt-12 py-4 border-t border-b border-[#1e3a5f]/30 overflow-hidden">
-        <div className="marquee-track flex items-center gap-6">
+      <div className="mt-12 py-4 border-t border-b border-[#1e3a5f]/30 overflow-hidden mask-edges">
+        <div
+          className="flex items-center gap-6"
+          style={{ width: 'max-content', animation: 'marquee-scroll 30s linear infinite', willChange: 'transform' }}
+        >
           {[...allMarquee, ...allMarquee].map((t, i) => (
             <span key={`${t}-${i}`}
               className="font-mono text-[12px] text-[#3a5a7a] hover:text-[#38bdf8] transition-colors whitespace-nowrap">

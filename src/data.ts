@@ -27,7 +27,7 @@ export const personal = {
 }
 
 export const skills = {
-  frontend: ['React', 'TypeScript', 'Vue 3', 'Vite', 'Tailwind CSS', 'HTML5', 'CSS3'],
+  frontend: ['React', 'TypeScript', 'Vue 3', 'Vite', 'Tailwind CSS', 'HTML5', 'CSS'],
   backend: ['Go (Golang)', 'Node.js', 'Express', 'Flask', 'Clean Architecture', 'REST APIs'],
   devops: ['Docker', 'Docker Compose', 'GitHub Actions', 'CI/CD', 'Nginx', 'VPS/SSH'],
   databases: ['PostgreSQL', 'Firebase Firestore', 'Redis'],
