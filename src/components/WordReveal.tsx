@@ -32,16 +32,15 @@ export default function WordReveal({ text, as: Tag = 'span', className = '', del
   return (
     <Tag ref={ref} className={className}>
       {words.map((word, i) => (
-        <span
-          key={i}
-          className="inline-block"
+        <span key={i}
+          className="inline-block mr-[0.3em]"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? 'translateY(0)' : 'translateY(12px)',
             transition: `opacity 0.4s ease ${i * 0.08 + 0.1}s, transform 0.4s ease ${i * 0.08 + 0.1}s`,
           }}
         >
-          {word}{' '}
+          {word}
         </span>
       ))}
     </Tag>

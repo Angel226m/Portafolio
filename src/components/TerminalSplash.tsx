@@ -42,7 +42,7 @@ export default function TerminalSplash() {
       }`}
     >
       <div className="font-mono text-[13px] leading-7 max-w-md">
-        <div className="text-[#34d399] mb-2 text-[11px] tracking-widest">┌─[PORFOLIO]─[v3.0]─[BOOT]─┐</div>
+        <div className="text-[#34d399] mb-2 text-[11px] tracking-widest">┌─[PORTFOLIO]─[v3.0]─[BOOT]─┐</div>
         {LINES.map((line, i) => (
           <div key={i} className={`${i < lineIdx ? 'text-[#38bdf8]' : i === lineIdx ? 'text-[#38bdf8]' : 'text-[#1e3a5f]'}`}>
             <span className="text-[#4a6a8a]">[</span>

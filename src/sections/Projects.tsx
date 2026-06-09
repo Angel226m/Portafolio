@@ -14,12 +14,12 @@ const accentMap: Record<string, string> = {
 }
 
 function Images({ images, accent }: { images: string[]; accent: string }) {
-  const [lightbox, setLightbox] = useState<string | null>(null)
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   const gridCols =
     images.length === 1 ? 'grid-cols-1' :
     images.length === 2 ? 'grid-cols-2' :
-    'grid-cols-1 sm:grid-cols-3'
+    'grid-cols-2 sm:grid-cols-3'
 
   return (
     <>
@@ -27,7 +27,7 @@ function Images({ images, accent }: { images: string[]; accent: string }) {
         {images.map((img, i) => (
           <button
             key={i}
-            onClick={() => setLightbox(img)}
+            onClick={() => setLightboxIndex(i)}
             className="relative overflow-hidden rounded-xl bg-[#0a1220] group/img focus:outline-none"
             style={{ aspectRatio: '16/9' }}
           >
@@ -48,8 +48,16 @@ function Images({ images, accent }: { images: string[]; accent: string }) {
           </button>
         ))}
       </div>
-      {lightbox && (
-        <ImageLightbox src={lightbox} alt="Vista previa" onClose={() => setLightbox(null)} />
+      {lightboxIndex !== null && (
+        <ImageLightbox
+          src={images[lightboxIndex]}
+          alt="Vista previa"
+          onClose={() => setLightboxIndex(null)}
+          onPrev={() => setLightboxIndex(i => i !== null && i > 0 ? i - 1 : i)}
+          onNext={() => setLightboxIndex(i => i !== null && i < images.length - 1 ? i + 1 : i)}
+          hasPrev={lightboxIndex > 0}
+          hasNext={lightboxIndex < images.length - 1}
+        />
       )}
     </>
   )
@@ -86,10 +94,10 @@ function Card({ p }: { p: P }) {
           <p className="font-mono text-[11px] text-[#4a6a8a] mt-0.5">{p.role}</p>
         </div>
 
-        <p className="text-[13px] text-[#6b8daa] leading-relaxed mb-3 line-clamp-3">{p.description}</p>
+        <p className="text-[13px] text-[#6b8daa] leading-relaxed mb-3">{p.description}</p>
 
         <ul className="space-y-1 mb-4">
-          {p.highlights.slice(0, 2).map((h, i) => (
+          {p.highlights.map((h, i) => (
             <li key={i} className="flex items-start gap-2 text-[12px] text-[#5a7a9a]">
               <span className="mt-1.5 shrink-0 w-1 h-1 rounded-full" style={{ background: dotColor }}/>
               {h}
@@ -156,11 +164,11 @@ export default function Projects() {
       <div className="mb-10 sm:mb-12 reveal">
         <div className="section-label">Proyectos destacados</div>
         <h2 className="text-[32px] sm:text-[42px] lg:text-[46px] font-extrabold text-[#e2edf8] leading-tight" style={{fontFamily:'Syne,sans-serif'}}>
-          <WordReveal text="Lo que he construido" />
+            <WordReveal text="Lo que he construido" />
         </h2>
         <div className="section-divider w-20 mt-3 mb-3" />
         <p className="text-[13px] sm:text-[14px] text-[#6b8daa] max-w-lg">
-          Proyectos full-stack con arquitecturas de producción, seguridad y despliegue automatizado.
+          Proyectos con arquitecturas de producción, seguridad y despliegue automatizado.
         </p>
       </div>
 

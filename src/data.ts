@@ -1,7 +1,9 @@
 import nayarakEmpleado from './imegens/NayarakEmpleado.png'
 import nayarakCliente from './imegens/Nayaraktourrcliente.png'
+import nayarakArquitectura from './imegens/ARKITETCURANAYRAKTOUR.png'
 import crackGuard1 from './imegens/crackguard.png'
 import crackGuard2 from './imegens/crakguard.png'
+import crackGuardArquitectura from './imegens/ARKITECTURACRAGUARD.png'
 import georiesgoMapa from './imegens/GEORIESGODEZLISAMIETO.png'
 import georiesgoHistorico from './imegens/registrohistoricosismo.png'
 import georiesgoRiesgo from './imegens/riesgodistrito-irc.png'
@@ -21,6 +23,7 @@ export const personal = {
   phone: '+51 932 284 763',
   github: 'https://github.com/Angel226m',
   githubHandle: 'Angel226m',
+  linkedin: 'https://www.linkedin.com/in/angel-junior-garay-torres-b79891220/',
   available: true,
   availableFor: 'Prácticas preprofesionales / Junior',
   bio: 'Apasionado por el desarrollo full-stack, DevOps, Inteligencia Artificial y soluciones escalables para problemas reales. Experiencia en proyectos con arquitecturas modernas, integración de pagos, CI/CD, IoT y deep learning.',
@@ -46,16 +49,16 @@ export const projects = [
     description:
       'Plataforma web completa con portal público para reserva de tours marítimos y panel administrativo. Incluye pagos online con Mercado Pago, cifrado AES-256-GCM de datos sensibles, backups automáticos a Backblaze B2 y despliegue multi-dominio.',
     highlights: [
-      'Reserva simultánea de paquetes familiares e individuales con validaciones en tiempo real',
-      'Generación automática de vouchers PDF con datos cifrados',
-      'Panel administrativo con autenticación basada en roles (vendedores / admins)',
-      'Recuperación de contraseña segura con Resend + JWT',
-      'Backups automáticos (pg_dump + gzip + B2) con retención de 7 días',
-      'Cobertura de tests >80% (Vitest + Go test + sqlmock)',
+      'Frontend: React + TypeScript + Vite + Tailwind CSS (diseño responsive moderno)',
+      'Backend: Go (Golang) con Arquitectura Hexagonal + Clean Architecture',
+      'Base de datos: PostgreSQL con índices optimizados · Backups automáticos en Backblaze B2 (retención 7 días)',
+      'Pagos & Seguridad: Mercado Pago · JWT (HS256) · bcrypt · AES-256-GCM · OWASP · ISO 27001',
+      'Infraestructura: Docker + Docker Compose · Nginx (reverse proxy) · CI/CD con GitHub Actions · Deploy en VPS',
+      'Testing: Vitest (frontend) + Go test + sqlmock (backend) – cobertura >80%',
     ],
     tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Go', 'PostgreSQL', 'Docker', 'Nginx', 'GitHub Actions', 'JWT', 'AES-256-GCM', 'Mercado Pago', 'Backblaze B2'],
     techColors: ['blue', 'blue', 'blue', 'blue', 'purple', 'purple', 'green', 'green', 'green', 'purple', 'purple', 'blue', 'green'],
-    images: [nayarakEmpleado, nayarakCliente],
+    images: [nayarakArquitectura, nayarakEmpleado, nayarakCliente],
     links: {
       github: 'https://github.com/Angel226m/devops.git',
       live: 'https://reservas.angelproyect.com/inicio',
@@ -71,16 +74,13 @@ export const projects = [
     title: 'CrackGuard v6.0 – Detector de Grietas con IA e IoT',
     role: 'Full-Stack Developer, ML Engineer & DevOps',
     description:
-      'Sistema avanzado de detección de grietas en estructuras de concreto usando deep learning, IoT y análisis morfológico. Detecta patrones, causa probable (corrosión/sobrecarga) y severidad (baja/media/alta) con precisión >90%.',
+      'Sistema avanzado de detección de grietas en estructuras de concreto usando deep learning, IoT y análisis morfológico. Precisión >90%, procesamiento ~2 s/imagen.',
     highlights: [
-      'Modelo 1: UNet++ + EfficientNet-B8 + TTA (6x transformaciones, robustez >95%)',
-      'Modelo 2: UNet++ + ConvNeXt-Base + CBAM Attention',
-      'IoT: Raspberry Pi + cámara Arducam 1080p HDR + streaming WebRTC',
-      'Procesamiento ~2s/imagen, archivos hasta 50MB',
-      'Selección dinámica de modelo por request (model=model_1|model_2)',
-      'Casos de uso: puentes, edificios, evaluación post-desastre',
+      'Modelos IA: UNet++ + EfficientNet-B8 + TTA (robustez >95%) · UNet++ + ConvNeXt-Base + CBAM Attention',
+      'IoT: Raspberry Pi + cámara Arducam 1080p HDR · Streaming WebRTC (MediaMTX) · Túneles FRP',
+      'Backend: Flask API dual-model · Subidas multipart/form-data · Soporte archivos hasta 50 MB',
     ],
-    images: [crackGuard1, crackGuard2],
+    images: [crackGuardArquitectura, crackGuard1, crackGuard2],
     tech: ['Python', 'Flask', 'PyTorch', 'UNet++', 'EfficientNet-B8', 'ConvNeXt', 'React', 'Docker', 'Raspberry Pi', 'WebRTC', 'GitHub Actions'],
     techColors: ['green', 'green', 'purple', 'purple', 'purple', 'purple', 'blue', 'green', 'green', 'blue', 'green'],
     links: {
@@ -142,20 +142,19 @@ export const projects = [
   {
     id: 5,
     year: '2026',
-    title: 'HotelFlux – Sistema de Gestión Hotelera Reactivo',
+    title: 'HotelFlux – Sistema de Gestión Hotelera Reactivo Funcional',
     role: 'Full-Stack Developer | Proyecto universitario final',
     description:
-      'Plataforma web para gestión hotelera con portal de reservas y panel administrativo en tiempo real. Arquitectura reactiva basada en Elixir/Phoenix con WebSockets, CQRS, Event Sourcing y Observable Repository Pattern.',
+      'Programación reactiva y funcional. Plataforma web para gestión hotelera con portal de reservas y panel administrativo en tiempo real.',
     highlights: [
-      'Frontend reactivo con React 19, TypeScript, RxJS, Vite y Tailwind CSS',
-      'Backend funcional con Elixir, Phoenix Framework, WebSockets y Arquitectura Hexagonal',
-      'Persistencia con PostgreSQL, CQRS, Event Sourcing y Soft Delete',
-      'Tiempo real mediante Phoenix Channels, PubSub y Observable Repository Pattern',
-      'Implementación de Saga Pattern, FSM (Finite State Machine) y programación funcional',
-      'Seguridad basada en JWT, RBAC, bcrypt, OWASP Top 10 e ISO 27001',
-      'Infraestructura con Docker, Nginx, Redis, Oban, Prometheus y Grafana',
-      'Testing automatizado con ExUnit y Vitest (>80% cobertura)',
-      'Reservas hoteleras, gestión de habitaciones, huéspedes, personal, limpieza, auditoría y dashboard analítico en tiempo real',
+      'Frontend: React 19, TypeScript, RxJS, Vite y Tailwind CSS.',
+      'Backend: Elixir, Phoenix Framework, WebSockets y Arquitectura Hexagonal.',
+      'Base de datos: PostgreSQL con CQRS, Event Sourcing y Soft Delete.',
+      'Tiempo real mediante Phoenix Channels, PubSub y Observable Repository Pattern.',
+      'Implementación de Saga Pattern, FSM y programación funcional.',
+      'Seguridad basada en JWT, RBAC, bcrypt, OWASP Top 10 e ISO 27001.',
+      'Infraestructura con Docker, Nginx, Redis, Oban, Prometheus y Grafana.',
+      'Testing automatizado con ExUnit y Vitest (>80% cobertura).',
     ],
     images: [hotelFluxCliente, hotelFluxAdmin, hotelFluxRecepcion, hotelFluxGrafana, hotelFluxPrometheus],
     tech: ['React', 'TypeScript', 'RxJS', 'Vite', 'Tailwind CSS', 'Elixir', 'Phoenix Framework', 'PostgreSQL', 'Redis', 'Docker', 'Nginx', 'Oban', 'Prometheus', 'Grafana', 'JWT', 'WebSockets'],
@@ -200,7 +199,7 @@ export const certifications = [
     id: 5,
     title: 'Introducción a la Ciberseguridad',
     issuer: 'Cisco Networking Academy',
-    abbr: 'CSCO',
+    abbr: 'CISCO',
     year: '2025',
     category: 'Seguridad',
     color: 'b' as const,
@@ -210,7 +209,7 @@ export const certifications = [
     id: 6,
     title: 'Introduction to IoT',
     issuer: 'Cisco Networking Academy',
-    abbr: 'CSCO',
+    abbr: 'CISCO',
     year: '2021',
     category: 'AI / ML',
     color: 'g' as const,
@@ -220,7 +219,7 @@ export const certifications = [
     id: 1,
     title: 'Foundations of Cybersecurity',
     issuer: 'Google (Coursera)',
-    abbr: 'GGL',
+    abbr: 'GOOGLE',
     year: '2025',
     category: 'Seguridad',
     color: 'b' as const,
@@ -230,7 +229,7 @@ export const certifications = [
     id: 2,
     title: 'Play It Safe: Manage Security Risks',
     issuer: 'Google (Coursera)',
-    abbr: 'GGL',
+    abbr: 'GOOGLE',
     year: '2025',
     category: 'Seguridad',
     color: 'b' as const,
@@ -280,7 +279,7 @@ export const certifications = [
     id: 9,
     title: 'Connect and Protect: Networks and Network Security',
     issuer: 'Google (Coursera)',
-    abbr: 'GGL',
+    abbr: 'GOOGLE',
     year: '2026',
     category: 'Seguridad',
     color: 'b' as const,
@@ -298,7 +297,7 @@ export const certifications = [
   },
   {
     id: 11,
-    title: 'IBM Generative AI for Cybersecurity Professionals',
+    title: "IBM's specialized program on generative AI for cybersecurity professionals",
     issuer: 'IBM (Coursera)',
     abbr: 'IBM',
     year: '2026',
