@@ -319,4 +319,14 @@ export const certifications = [
       },
     ],
   },
+  {
+    id: 12,
+    title: 'Tools of the Trade: Linux and SQL',
+    issuer: 'Google (Coursera)',
+    abbr: 'GOOGLE',
+    year: '2026',
+    category: 'Cloud',
+    color: 'o' as const,
+    link: 'https://coursera.org/share/7816b300cc6d68dcc32fdee2fe8a5048',
+  },
 ]
